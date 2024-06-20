@@ -37,8 +37,9 @@ body {
     -webkit-user-select: none;
     -webkit-user-drag: none;
     -ms-user-select: none;
-    width: 80px;
-    height: 80px;
+    width: 120px;
+    height: 120px;
+    border-radius: 100px;
 }
 
 .price {
@@ -52,13 +53,9 @@ body {
 
 .details p {
     margin: 5px 0;
-    font-size: 14px;
+    font-size: 16px;
     font-family: 'Noto Sans';
     color: #232220;
-}
-
-img {
-    border-radius: 100px;
 }
 
 .add-btn {
@@ -66,7 +63,7 @@ img {
     border: none;
     padding: 10px 20px;
     color: white;
-    font-size: 14px;
+    font-size: 20px;
     font-family: 'Noto Sans';
     font-weight: bold;
     cursor: pointer;
@@ -78,14 +75,14 @@ img {
 }
 
 .add-btn:active {
-    font-size: 13px;
+    font-size: 19px;
 }
 
 .ripple {
     position: absolute;
     background-color: #009933;
-    width: 1rem;
-    height: 1rem;
+    width: 0.5rem;
+    height: 0.5rem;
     border-radius: 50%;
     transform: translate(-50%, -50%);
     pointer-events: none;
