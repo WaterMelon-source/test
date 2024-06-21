@@ -55,7 +55,7 @@ body {
     margin: 5px 0;
     font-size: 16px;
     font-family: 'Noto Sans';
-    color: #232220;
+    color: var(--tg-theme-text-color);
 }
 
 .add-btn {
