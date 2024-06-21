@@ -15,7 +15,7 @@
             <img src="1_magic_ball.png" alt="">
             <div class="details">
                 <p>1 🔮 • <span class="price">69 ₽</span></p>
-                <button onclick="animateRipple(event)" class="add-btn">КУПИТЬ</button>
+                <button onclick="buy()" class="add-btn">КУПИТЬ</button>
             </div>
         </div>
         <div class="item">
@@ -68,9 +68,40 @@
             document.getElementById("myDiv").style.display = "flex";
         }
         
-        function button1() {
-            console.log("Error: 432");
-            tg.showAlert("Error: 432");
+        function buy() {
+            const tg = window.Telegram.WebApp;
+            const url = 'http://127.0.0.1:5000/handle_endpoint'; // Replace with your backend endpoint
+            
+            document.getElementById('paymentButton').addEventListener('click', function() {
+                const data = JSON.stringify({
+                    // Replace with data structure your backend expects
+                    amount: 100,  // Example data
+                    currency: 'USD'  // Example data
+                });
+
+                tg.MainButton.show();
+                tg.MainButton.setText("Pay");
+                tg.MainButton.onClick(() => {
+                    console.log("Starting payment process...");
+                    const xhr = new XMLHttpRequest();
+                    xhr.open("POST", url, true);
+                    xhr.setRequestHeader("Content-Type", "application/json");
+                    xhr.setRequestHeader("X-Custom-Info", "getOpenInvoiceUrl");
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState === 4 && xhr.status === 200) {
+                            const response = JSON.parse(xhr.responseText);
+                            const invoiceUrl = response.invoice_url;
+                            if (invoiceUrl) {
+                                // Open invoice URL in a new tab
+                                window.open(invoiceUrl, '_blank');
+                            } else {
+                                console.error('Failed to get invoice URL');
+                            }
+                        }
+                    };
+                    xhr.send(data);
+            });
+        });
         }
 
         function animateRipple(event) {
