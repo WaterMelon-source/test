@@ -1,4 +1,4 @@
-body {
+html, body {
     margin: 0;
     padding: 0;
     background-color: var(--tg-theme-bg-color);
@@ -105,18 +105,19 @@ body {
 /* Spinning Thing */
 
 #loader {
-    position: absolute;
+    position: fixed;
     left: 50%;
-    top: 45%;
+    top: 50%;
     z-index: 1;
     width: 30px;
     height: 30px;
-    margin: -15px 0 0 -15px;
+    margin: -19px 0 0 -19px;
     border: 8px solid #f3f3f3;
     border-radius: 50%;
     border-top: 8px solid #999999;
     -webkit-animation: spin 2s linear infinite;
     animation: spin 1s linear infinite;
+    transform: translate(-50%, -50%);
 }
 
 @-webkit-keyframes spin {
